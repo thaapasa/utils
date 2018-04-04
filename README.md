@@ -1,2 +1,3 @@
-# utils
-Collection of random utilities and stuff
+# Utils
+
+Collection of random utilities and stuff, for reference.
