@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Generate random password
 
 OS=`uname`
