@@ -2,4 +2,6 @@
 *.iml
 bin
 build
+out
 *.log
+/.gradle

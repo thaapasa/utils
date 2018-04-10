@@ -41,3 +41,8 @@ inline fun <T> Optional<T>.orGet(x: () -> T): T = when (this) {
     is Some -> value
     is None -> x()
 }
+
+fun <T> T?.toOptional(): Optional<T> = when (this) {
+    null -> None
+    else -> Some(this)
+}
