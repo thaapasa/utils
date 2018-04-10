@@ -17,6 +17,10 @@ sealed class Optional<out T> {
         is Some -> mapper(value)
         is None -> this
     }
+    inline fun <X> fold(forSome: (T) -> X, forNone: () -> X) = when (this) {
+        is Some -> forSome(value)
+        is None -> forNone()
+    }
     companion object {
         fun <T> of(t: T?): Optional<T> = when (t) {
             null -> None
