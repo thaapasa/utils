@@ -13,6 +13,10 @@ sealed class Optional<out T> {
         is Some -> Some(mapper(value))
         is None -> this
     }
+    inline fun forEach(mapper: (T) -> Unit): Unit = when (this) {
+        is Some -> mapper(value)
+        is None -> Unit
+    }
     inline fun <X> flatMap(mapper: (T) -> Optional<X>): Optional<X> = when (this) {
         is Some -> mapper(value)
         is None -> this
@@ -29,8 +33,12 @@ sealed class Optional<out T> {
     }
 }
 
-object None: Optional<Nothing>()
-data class Some<out T>(val value: T): Optional<T>()
+object None: Optional<Nothing>() {
+    override fun toString() = "None"
+}
+data class Some<out T>(val value: T): Optional<T>() {
+    override fun toString() = "Some($value)"
+}
 
 infix fun <T> Optional<T>.or(x: T): T = when (this) {
     is Some -> value
@@ -40,6 +48,16 @@ infix fun <T> Optional<T>.or(x: T): T = when (this) {
 inline fun <T> Optional<T>.orGet(x: () -> T): T = when (this) {
     is Some -> value
     is None -> x()
+}
+
+fun <T> Optional<T>.orThrow(x: Throwable): T = when (this) {
+    is Some -> value
+    is None -> throw x
+}
+
+fun <T> Optional<Optional<T>>.flatten(): Optional<T> = when (this) {
+    is Some -> value
+    is None -> None
 }
 
 fun <T> T?.toOptional(): Optional<T> = when (this) {
