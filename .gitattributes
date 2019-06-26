@@ -28,7 +28,7 @@
 *.pl diff=perl
 
 # Scripts
-*.sh text
+*.sh text eol=lf
 *.bat text
 *.launch text
 *.patch text
@@ -42,12 +42,13 @@
 *.less text
 *.sass text
 *.stylus text
-*.js text
-*.jsx text
-*.ts text
-*.tsx text
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
 *.json text
 *.htc text
+*.svg text eol=lf
 
 # Text, properties, xml
 *.txt text
@@ -81,8 +82,8 @@
 # Enforce specific EOL characters
 
 # npm config
-package-lock.json eol=lf
-package.json eol=lf
+package-lock.json text eol=lf
+package.json text eol=lf
 
 # Denote all files that are truly binary and should not be modified.
 
@@ -95,7 +96,6 @@ package.json eol=lf
 *.xcf binary
 *.mp4 binary
 *.psd binary
-*.svg binary
 *.swf binary
 *.wav binary
 *.mpg binary
