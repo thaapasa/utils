@@ -10,6 +10,7 @@
 *.scala text
 *.sbt text
 *.kt text
+*.rs text
 *.c text diff=cpp
 *.cpp text diff=cpp
 *.c++ text diff=cpp
